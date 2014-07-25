@@ -22,20 +22,9 @@ using namespace std;
 class Solution {
   public:
     void reverseWords(string &s) {
-      char ss[100];
-      strcpy(ss, s.c_str());
-      char* start = ss;
-      vector<string> v_string;
-      vector<char> v_char;
-      for(int i = 0; i < sizeof(s); i++){
-        if(ss[i] == " "){
-          if(v_char.size() != 0){
-            v_string.push_back(string(v_char.begin(),v_char.end()));
-            v_char.clear();
-          }
-        }else{
-          v_char.push_back(ss[i]);
-        }
+      int size = s.size();
+      if (s[size-1] == ' '){
+        return;
       }
-    }
+  }
 };
