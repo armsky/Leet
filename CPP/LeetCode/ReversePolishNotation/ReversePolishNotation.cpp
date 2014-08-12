@@ -1,19 +1,19 @@
 #include <vector>
-using std;
+using namespace std;
 
 //I shoudl ask interviewer is the tokens promised to be correct or not
 class Solution {
 public:
     int evalRPN(vector<string> &tokens) {
-        vectot<int> stack;  
+        vector<int> stack;
         int a;
         int b;
-        for (int i=0; i<tokens.size; i++){
-            if (stack.size >=2){
-                stack.pop_back() = a;
-                stack.pop_back() = b;
+        for (int i=0; i<tokens.size(); i++){
+            if (stack.size() >=2){
+                int a = stack.pop_back();
+                int b = stack.pop_back();
             }
-            if (tokens[i] == '+'){
+            if (tokens[i] == "+"){
                 stack.push_back(b+a);
             }else if (tokens[i] == '-'){
                 stack.push_back(b-a);
@@ -23,7 +23,7 @@ public:
                 stack.push_back(b/a);
             }else{
                 stack.push_back(tokens[i]);
-            }    
+            }
         return stack.pop_back()
         }
     }
