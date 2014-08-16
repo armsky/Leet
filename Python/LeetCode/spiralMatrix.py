@@ -36,13 +36,12 @@ class Solution:
                     trueMatrix[i][j] = False
                     print trueMatrix
 
-
                     i = i + index[0]
                     j = j + index[1]
                     count = count-1
                     print "count is " + str(count)
 
-                    #python allow index=-1, which means last element
+                    #python allow index=-1, which means the last element
                     #we need to escape from this
                     if j < 0:
                         j = 0
