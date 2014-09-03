@@ -28,6 +28,7 @@ class Solution:
         grid = [[0]*n for i in range(m)]
         for i in range(m-1,0-1,-1):
             for j in range(n-1,0-1,-1):
+                #this case could be included in below two cases
                 if m==1 or n==1:
                     if obstacleGrid[i][j] == 1:
                         return 0
@@ -50,12 +51,11 @@ class Solution:
         return grid[0][0]
 
 solution = Solution()
-ex1 = [
-  [0,0,0],
-  [0,1,0],
-  [0,1,0],
-  [0,0,0]
-]
+ex1 =  [[0,0,0,0,0],
+        [0,0,0,0,1],
+        [0,0,0,1,0],
+        [0,0,1,0,0]]
+
 ex2 = [[0,0,0,0,1]]
 
 ex4 = [[0,0],

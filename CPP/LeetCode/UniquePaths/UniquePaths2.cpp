@@ -16,6 +16,8 @@ There is one obstacle in the middle of a 3x3 grid as illustrated below.
 The total number of unique paths is 2.
 
 Note: m and n will be at most 100.
+
+Reminder: Please do not use nested vectors if the size of your storage is known ahead of time.
 */
 
 #include <iostream>
@@ -25,40 +27,43 @@ using namespace std;
 class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int> > &obstacleGrid) {
-        
-    }
-};
-
-class Solution {
-public:
-    //DP
-    int uniquePaths(int m, int n) {
-        //MUST initialize this vector!!
+        int m = obstacleGrid.size();
+        int n = obstacleGrid[0].size();
         vector<vector<int> > grid(m, vector<int>(n,0));
-        for (int i=m-1;i>=0;i--){
-          for (int j=n-1;j>=0;j--){
-            if (i==m-1 || j==n-1){
-              grid[i][j] = 1;
+        for (int i=m-1; i>=0; i--){
+          for (int j=n-1; j>=0; j--){
+            if (obstacleGrid[i][j] == 1){
+              grid[i][j] = 0;
+            }else if(i == m-1){
+              if(j < n-1 & obstacleGrid[i][j+1] ==1){
+                grid[i][j] = 0;
+                obstacleGrid[i][j] = 1;
+              }else{
+                grid[i][j] = 1;
+              }
+            }else if (j == n-1){
+              if (i < m-1 & obstacleGrid[i+1][j] ==1){
+                grid[i][j] = 0;
+                obstacleGrid[i][j] = 1;
+              }else{
+                grid[i][j] = 1;
+              }
             }else{
-              grid[i][j] = grid[i+1][j]+grid[i][j+1];
+              grid[i][j] = grid[i+1][j] + grid[i][j+1];
             }
           }
         }
         return grid[0][0];
     }
-    //recursive
-    int up_r(int m, int n){
-      if (m==1 || n==1) return 1;
-      return up_r(m-1,n) + up_r(m,n-1);
-    }
-    //DP with memory efficiency
-    int uniquePaths_2(int m, int n){
-      vector<int> grid(n,1);
-      for (int i=1; i<m; i++){
-        for (int j=1; j<n; j++){
-          grid[j] += grid[j-1];
-        }
-      }
-      return grid[n-1];
-    }
 };
+
+int main(){
+    Solution *solution = new Solution();
+    vector<vector<int> > ex1(4, vector<int> (5,0));
+    ex1[1][4] = 1;
+    ex1[2][3] = 1;
+    ex1[3][2] = 1;
+    //{{0,0,0,0,0},{0,0,0,0,1},{0,0,0,1,0},{0,0,1,0,0}};
+    cout << solution->uniquePathsWithObstacles(ex1);
+}
+
