@@ -42,7 +42,6 @@ class Solution:
         end = row-1
         while start <= end:
             mid = (start+end)/2
-            print mid
             if matrix[mid][0] == target:
                 return True
             elif matrix[mid][0] > target:
@@ -52,7 +51,6 @@ class Solution:
         row = end
         start = 0
         end = col-1
-        print matrix[row][0]
         while start<=end:
             mid = (start+end)/2
             if matrix[row][mid] == target:
