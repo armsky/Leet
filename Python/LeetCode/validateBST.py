@@ -21,13 +21,15 @@ class Solution:
     def isValidBST(self, root):
         if root == None:
             return True
-        if root.left == None and root.right == None:
+        #Python basically has no limit for int
+        return self.isValidSubTree(root, float("-infinity"), float("infinity"))
+    def isValidSubTree(self, node, minVal, maxVal):
+        if node == None:
             return True
-        if (root.left == None or root.left.val < root.val) and (root.right == None or root.right.val > root.val):
-            if self.isValidBST(root.left) and self.isValidBST(root.right):
-                return True
+        #important
+        if node.val <= minVal or node.val >= maxVal:
             return False
-        return False
+        return self.isValidSubTree(node.left, minVal, node.val) and self.isValidSubTree(node.right, node.val, maxVal)
 
 root = TreeNode(10)
 node1 = TreeNode(5)
