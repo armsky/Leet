@@ -35,7 +35,6 @@ class Solution:
                     left = mid+1
                 else:
                     right = mid-1
-            print mid,left,right
         return -1
 
 so = Solution()
