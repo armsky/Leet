@@ -26,8 +26,6 @@ class Solution:
 #                print  nums[i][j]
 #        return nums[row-1][col-1]
     #////time exceed ...................
-        if row ==1:
-            return sum(grid[0])
         for i in range(row):
             for j in range(col):
                 if i == 0 and j > 0:
