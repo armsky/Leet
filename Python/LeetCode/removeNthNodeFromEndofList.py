@@ -22,10 +22,15 @@ class Solution:
     def removeNthFromEnd(self, head, n):
         fast = head
         slow = head
-        while n > 0:
+        while n >0:
             fast = fast.next
-        while fast != None and fast.next != None:
-            fast = fast.next
-            slow = slow.next
-        slow.next = slow.next.next
-        return head
+            n -= 1
+        if fast != None:
+            while fast.next != None:
+                fast = fast.next
+                slow = slow.next
+            slow.next = slow.next.next
+            return head
+        #need remove the first node
+        else:
+            return head.next
