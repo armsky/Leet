@@ -21,7 +21,7 @@ using namespace std;
 class Solution {
 public:
     //regular method.
-    bool searchMatrix(vector<vector<int> > &matrix, int target) {
+    bool searchMatrix2(vector<vector<int> > &matrix, int target) {
         int row = matrix.size();
         if (row == 0) return false;
         int col = matrix[0].size();
@@ -35,4 +35,15 @@ public:
         }
         return false;
     }
+
+    bool searchMatrix(vector<vector<int> > &matrix, int target) {
+        int row = matrix.size();
+        if (row == 0) return false;
+        int col = matrix[0].size();
+        int l = 0;
+        int r = row-1;
+        int mid;
+        for (
+    }
+
 };
