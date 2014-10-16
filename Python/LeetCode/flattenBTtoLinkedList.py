@@ -51,8 +51,9 @@ class Solution:
         tempRight = self.convertToList(root.right)
         root.right = self.convertToList(root.left)
         root.left = None
-        while root.right != None:
-            root = root.right
-        root.right = tempRight
+        tempRoot = root
+        while tempRoot.right != None:
+            tempRoot = tempRoot.right
+        tempRoot.right = tempRight
         return root
 
