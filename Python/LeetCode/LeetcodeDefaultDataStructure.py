@@ -1,5 +1,7 @@
 # From LeetCode definition
 import sys
+import Queue
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -23,3 +25,18 @@ class ListNode:
         print
 
 
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+    @classmethod
+    def fromlist(cls, l):
+        if not l:
+            return None
+        q = Queue.Queue()
+        for i in xrange(len(l)):
+            node = cls(l[i])
+            q.put(node)
