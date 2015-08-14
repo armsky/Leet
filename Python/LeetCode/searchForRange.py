@@ -13,6 +13,9 @@ class Solution:
     # @param {integer[]} nums
     # @param {integer} target
     # @return {integer[]}
+
+    # Two Binary search to find the left bound and right bound
+    # Be careful with corner cases (they are a lot...)
     def searchRange(self, nums, target):
         res = [-1,-1]
         if not nums:
