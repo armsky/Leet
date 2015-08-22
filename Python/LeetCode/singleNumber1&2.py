@@ -28,3 +28,8 @@ class Solution:
         for i in xrange(1, len(nums)):
             res = res ^ nums[i]
         return res
+
+# Single Number II
+# Given an array of integers, every element appears three times except for one. Find that single one.
+
+# Use bit map, if one bit has three "1" reset it to "0", the remaining will be the number.

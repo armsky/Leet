@@ -18,22 +18,22 @@ class Solution:
 
     # One pass solution
     def sortColors(self, nums):
+        redst = 0
+        bluest = len(nums) - 1
         i = 0
-        size = len(nums)
-        for x in xrange(2): # Only need to sort '0' and '1', '2's will be already sorted
-            j = size -1
-            while i < j:
-                while nums[i] == x:
-                    if i >= size-1:
-                        break
-                    i += 1
-                while nums[j] != x:
-                    if j <= 0:
-                        break
-                    j -= 1
-                if i < j and i < size and j > -1:
-                    nums[i], nums[j] = nums[j], nums[i]
-        print nums
+        while i < bluest + 1:
+            if nums[i] == 0:
+                nums[i], nums[redst] = nums[redst], nums[i]
+                i += 1
+                redst += 1
+                continue
+            if nums[i] == 2:
+                nums[i], nums[bluest] = nums[bluest], nums[i]
+                # Do not increase i here
+                bluest -= 1
+                continue
+            i += 1
+        return
 
     # counting sort solution
     def sortColors2(self, nums):

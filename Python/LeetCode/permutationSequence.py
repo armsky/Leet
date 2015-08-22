@@ -19,9 +19,10 @@ class Solution:
     # @return a string
     def getPermutation(self, n, k):
         nums = []
+        # There would be n! permutations total.
         factorial = [1] * (n+1)
+        nums = range(1, n+1) # Create a list [1, n+1]
         for i in xrange(1, n+1):
-            nums.append(str(i))
             factorial[i] = factorial[i-1] * i
 
         result = ""
@@ -29,8 +30,7 @@ class Solution:
         for i in xrange(n, 0, -1):
             j = k / factorial[i-1]
             k = k % factorial[i-1]
-            result += nums[j]
-            del nums[j]
+            result += nums.pop(j)
 
         return result
 

@@ -9,7 +9,7 @@ Follow up:
 Could you solve it with constant space complexity? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)
 """
 #   Since result[i] = (x1 * x2 * ... * xi-1)*(xi+1 * ... * xn)
-#   So we can loop the array twice, back and force
+#   So we can loop the array twice, back and forth
 
 class Solution:
     # @param {integer[]} nums

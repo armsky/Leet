@@ -52,7 +52,7 @@ class Solution:
     # A real good solution
     # If i is solution for station[0..n], there must not exist a k that sum[k:i-1] > 0
     # otherwist the solution should be k. so sum[k:i-1] < 0
-    # Whick also means, sum[i:n] must > 0
+    # Which also means, sum[i:n] must > 0
     # Then the problem becomes: find the last k make sum[k:i-1] < 0, so [i:n] is the longest subarray
     # that fullfill sum[i:n] > 0
     # O(n) time, boom!
@@ -63,12 +63,12 @@ class Solution:
             sum += (gas[i] - cost[i])
             total += (gas[i] - cost[i])
             if sum < 0:
-                j = i
+                k = i
                 sum = 0
         if total < 0:
             return -1
         else:
-            return j + 1
+            return k + 1
 
 so = Solution()
 print so.canCompleteCircuit([2,3,1],[3,1,2])

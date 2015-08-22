@@ -18,8 +18,9 @@ class Solution:
     # @param {TreeNode} root
     # @param {integer} k
     # @return {integer}
+
+    # In-order traversal, O(N) time, O(k) space.
     def kthSmallest(self, root, k):
-        def kthSmallest(self, root, k):
         stack = []
         n = 0
         while root or stack:
