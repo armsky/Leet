@@ -9,13 +9,12 @@ For example,
 Given s = "Hello World",
 return 5.
 """
-def lengthOfLastWord(s):
+def lengthOfLastWord(self, s):
     sl = s.split(' ')
-    print sl
-    for i in xrange(-1, -len(sl)-1, -1):
-        if sl[i] is not "":
-            return len(sl[i])
-    else:
-        return 0
-s = " a "
-print lengthOfLastWord(s)
+    while sl:
+        if not sl[-1]:
+            sl.pop()
+        else:
+            return len(sl[-1])
+
+    return 0
