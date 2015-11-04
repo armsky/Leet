@@ -30,9 +30,19 @@ class Solution:
         A = A[:i+1]
         print A
         return i+1
+    def removeDuplicates2(self, nums):
+        if not nums:
+            return 0
+        n = len(nums)
+        i = 1
+        for j in xrange(1, n):
+            if nums[j] != nums[j-1]:
+                nums[i] = nums[j]
+                i += 1
+        return i
 
 so = Solution()
 A = [1,1,2,2,3,4,5,5,5,6,7,8,8,9,9]
 B = [1,2]
-print so.removeDuplicates(A)
-print so.removeDuplicates(B)
+print so.removeDuplicates2(A)
+print so.removeDuplicates2(B)
