@@ -30,6 +30,7 @@ class Solution:
         else:
             return -1
 so = Solution()
+print so.binarySearch([3,3,3,3,3,3,3], 3)
 
 """
 Test cases:

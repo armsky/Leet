@@ -47,6 +47,34 @@ class BSTIterator(object):
                 right_node = right_node.left
         return node.val
 
+# A neat version:
+class BSTIterator(object):
+    def __init__(self, root):
+        """
+        :type root: TreeNode
+        """
+        self.stack = []
+        self.push_all(root)
+
+    def hasNext(self):
+        """
+        :rtype: bool
+        """
+        return self.stack
+
+    def next(self):
+        """
+        :rtype: int
+        """
+        node = self.stack.pop()
+        self.push_all(node.right)
+        return node.val
+
+    def push_all(self, node):
+        while node:
+            self.stack.append(node)
+            node = node.left
+
 node = TreeNode(2)
 node.left = TreeNode(1)
 node.right = TreeNode(3)

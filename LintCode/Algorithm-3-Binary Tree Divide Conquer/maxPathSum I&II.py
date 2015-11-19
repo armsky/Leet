@@ -43,6 +43,31 @@ class Solution:
         maxSum = max(left[0], right[0], left[1] + right[1] + root.val)
         return maxSum, singleSum
 
+"""
+- Binary Tree Maximum Path Sum II
+Given a binary tree, find the maximum path sum from root.
+
+The path may end at any node in the tree.
+
+Example
+Given the below binary tree:
+
+  1
+ / \
+2   3
+return 4. (1->3)
+"""
+class Solution:
+    """
+    @param root the root of binary tree.
+    @return an integer
+    """
+    def maxPathSum2(self, root):
+        if not root:
+            return 0
+        return max(self.maxPathSum2(root.left), self.maxPathSum2(root.right)) + root.val
+
+
 a = TreeNode(1)
 b = TreeNode(2)
 c = TreeNode(3)

@@ -28,33 +28,23 @@ class TreeNode:
 class BSTIterator:
     #@param root: The root of binary tree.
     def __init__(self, root):
-        while root.left:
-            self.parent = root
-            self.cur = root.left
-        self.list = [self.cur]
-        self.list_size = 1
-        self.pos = 0
-
-    def new_list(self):
-        cur = self.parent
-        self.list = [cur]
-
+        self.stack = []
+        self.push_all(root)
 
     #@return: True if there has next node, or false
     def hasNext(self):
-        if self.cur.val >= max_val:
-            return False
-        return True
+        return self.stack
 
     #@return: return next node
     def next(self):
-        cur_node = self.list[self.pos]
-        self.pos += 1
-        if self.pos == self.list_size:
+        node = self.stack.pop()
+        self.push_all(node.right)
+        return node
 
-
-        return cur_node
-
+    def push_all(self, node):
+        while node:
+            self.stack.append(node)
+            node = node.left
 
 #Example of iterate a tree:
 iterator = BSTIterator(root)
