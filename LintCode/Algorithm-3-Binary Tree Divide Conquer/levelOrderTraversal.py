@@ -102,7 +102,28 @@ class Solution:
             re.append(temp)
         return re
 
-    # 4. DFS
+    # 4. DFS:
+    # Pro: _trade_time_for_space_
+    def levelOrder4(self, root):
+        if not root:
+            return None
+        max_level = 0
+        while True:
+            temp = []
+            self.dfs(root, temp, 0, max_level)
+            if not temp:
+                break
+            re.append(temp)
+            max_level += 1
+
+    def dfs(self, root, temp, cur_level, max_level):
+        if not root or cur_level > max_level:
+            return
+        if cur_level == max_level:
+            temp.appned(root.val)
+        else:
+            self.dfs(root.left, temp, cur_level+1, max_level)
+            self.dfs(root.right, temp, cur_level+1, max_level)
 
     # 5. Recursive
     # This will only return a simple list (not a 2D list as above)
