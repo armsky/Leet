@@ -14,6 +14,19 @@ The time complexity of Greedy method is O(n).
 The time complexity of Dynamic Programming method is O(n^2).
 """
 
+"""
+II.
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Your goal is to reach the last index in the minimum number of jumps.
+
+Example
+Given array A = [2,3,1,1,4]
+
+The minimum number of jumps to reach the last index is 2. (Jump 1 step from index 0 to 1, then 3 steps to the last index.)
+"""
+
+
 class Solution:
     # @param A, a list of integers
     # @return a boolean
@@ -31,16 +44,6 @@ class Solution:
                 return False
         return True
 
-"""
-Given an array of non-negative integers, you are initially positioned at the first index of the array.
-Each element in the array represents your maximum jump length at that position.
-Your goal is to reach the last index in the minimum number of jumps.
-
-Example
-Given array A = [2,3,1,1,4]
-
-The minimum number of jumps to reach the last index is 2. (Jump 1 step from index 0 to 1, then 3 steps to the last index.)
-"""
     def jump(self, A):
         # This will have TLE
         import sys
@@ -53,18 +56,23 @@ The minimum number of jumps to reach the last index is 2. (Jump 1 step from inde
                 dp[j] = min(dp[j], dp[i]+1)
         return dp[-1]
 
-     def jump_modified(self, A):
+    def jump_modified(self, A):
         import sys
         n = len(A)
         dp = [sys.maxint] * n
         dp[0] = 0
-        for i in range(n):
-            num = A[i]
-            if i + num >= n-1:
-                return dp[i] + 1
-            for j in range(i+1, i+1+num):
-                dp[j] = min(dp[j], dp[i]+1)
+        for i in range(1, n):
+            dp[i] = sys.maxint
+            for j in range(i):
+                if dp[j] != sys.maxint and A[j] + j >= i:
+                    dp[i] = dp[j]+1
+                    break
         return dp[-1]
 
 # Test Case:
 A = [1,0]
+B = [11,15,28,53,3]
+so = Solution()
+print so.jump_modified(A)
+print so.jump_modified(B)
+

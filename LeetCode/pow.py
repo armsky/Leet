@@ -16,33 +16,31 @@ class Solution:
     # @param x, a float
     # @param n, a integer
     # @return a float
+
+    # Recursive
     def pow(self, x, n):
-        if x==0:
-            if n>0:
-                return 0
-            elif n==0:
-                return 1
-            else:
-                return "some ERROR"
-        if n==0:
+        if n == 0:
             return 1
-        elif n==1:
-            return x
-        else:
-            #becareful the "self" here
-            if n>0:
-                return self.power(x,n)
-            else:
-                return 1.0/self.power(x,-n)
-    #becareful the "self" here
-    def power(self, x, n):
-        if n==0:
+        if n < 0:
+            return 1 / self.myPow(x, -n)
+        if n % 2 == 1:
+            return x * self.myPow(x, n-1)
+        return self.myPow(x*x, n/2)
+
+    # Iterative
+    def pow(self, x, n):
+        if n == 0:
             return 1
-        v = self.power(x, abs(n/2))
-        if n%2 == 1:
-            return v*v*x
-        else:
-            return v*v
+        if n < 0:
+            x = 1/x
+            n = -n
+        re = 1
+        while n:
+            if n & 1 == 1:
+                re *= x
+            x *= x
+            n = n >> 1
+        return re
 
 solution = Solution()
 print solution.pow(0.00001, 2147483647)
