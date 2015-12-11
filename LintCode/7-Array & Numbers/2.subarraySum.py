@@ -13,5 +13,15 @@ class Solution:
              and the index of the last number
     """
     def subarraySum(self, nums):
-
+        table = {}
+        # Put sum as key, if the current sum has been seen before,
+        # then there is a zero sum array.
+        table[0] = -1 # Must initialize 0 as a key
+        sum = 0
+        for i in range(len(nums)):
+            sum += nums[i]
+            if sum in table:
+                return [table[sum]+1, i]
+            else:
+                table[sum] = i
 

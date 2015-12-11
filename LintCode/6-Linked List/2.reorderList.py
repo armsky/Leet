@@ -45,7 +45,7 @@ class Solution:
         a = head
         mid = self.find_mid(head)
         b = self.reverse(mid.next)
-        mid.next = None
+        mid.next = None     # Important!!!
         self.merge(a, b)
 
 

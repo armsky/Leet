@@ -40,12 +40,14 @@ class Solution:
             return root
         left = self.lowestCommonAncestor(root.left, A, B)
         right = self.lowestCommonAncestor(root.right, A, B)
-        if not left:
-            return right
-        elif not right:
-            return left
-        else:
+
+        if left and right:
             return root
+        if left:
+            return left
+        if right:
+            return right
+        return None
 
 a = TreeNode(1)
 so = Solution()
